@@ -1,2 +1,2 @@
-# thp_sort_algorithms
-Algorithmes de tri
+# thp_algo_complexity
+Déterminer la complexité d'un algorithme
