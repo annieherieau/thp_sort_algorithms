@@ -2,7 +2,7 @@
 // const fs = require('fs');
 
 // For default exports you should use:
-import * as fs from 'fs';
+import * as fs from "fs";
 
 import { AlgoSort } from "./AlgoSort.js";
 
@@ -15,21 +15,21 @@ let fileData;
 
 // Méthode synchrone
 try {
-    const data = fs.readFileSync(fileName, 'utf8');
-    if (data.length == 0) { 
-        console.error('Empty File');
-    };
-    fileData = data;
-
+  const data = fs.readFileSync(fileName, "utf8");
+  if (data.length == 0) {
+    console.error("Empty File");
+  }
+  fileData = data;
 } catch (error) {
-    console.error(error.message);
+  console.error(error.message);
 }
 
-console.log('****************')
+console.log("****************");
 console.log(fileName);
 const SortedArray = new AlgoSort(fileData);
 console.log(SortedArray.input_array);
 console.log(SortedArray.sort());
-console.log('-----------------')
-SortedArray.showStats();
-console.log('****************')
+console.log("-----------------");
+console.log(SortedArray.menu);
+SortedArray.showStats(2);
+console.log("****************");

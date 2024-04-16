@@ -5,6 +5,7 @@ export class AlgoSort {
     this.insertion_count = 0;
     this.selection_count = 0;
     this.quick_count = 0;
+    this.menu = 'Algorithmes de tri:\n1. Tri à bulle\n2. Tri par insertion\n3. Tri par sélection\n4. Tri par insertion\n'
   }
 
   // tri par bulle
@@ -79,22 +80,36 @@ export class AlgoSort {
 
   /// HELPERS
   // afficher les comparaisons
-  showStats() {
-    let bubble = this.bubbleSort();
-    console.log(`Tri à bulle: ${this.bubble_count} comparaisons [${bubble}]`);
+  showStats(menuItem=1) {
+    switch (menuItem) {
+      case 1:
+        let bubble = this.bubbleSort();
+        console.log(
+          `Tri à bulle: ${this.bubble_count} comparaisons [${bubble}]`
+        );
+        break;
+    
+      case 2:
+        let insertion = this.insertionSort();
+        console.log(
+          `Tri par insertion: ${this.insertion_count} comparaisons [${insertion}]`
+        );
+      break;
 
-    let insertion = this.insertionSort();
-    console.log(
-      `Tri par insertion: ${this.insertion_count} comparaisons [${insertion}]`
-    );
-
-    let selection = this.selectionSort();
+      case 3:
+   let selection = this.selectionSort();
     console.log(
       `Tri par sélection: ${this.selection_count} comparaisons [${selection}]`
     );
+      break;
+      case 4:
+        let quick = this.quickSort();
+        console.log(`Tri rapide: ${this.quick_count} comparaisons [${quick}]`);
+      break;
 
-    let quick = this.quickSort();
-    console.log(`Tri rapide: ${this.quick_count} comparaisons [${quick}]`);
+      default:
+        break;
+    }
   }
 
   // utilise push pour nouvel array car sinon le input_array est modifié avec sort sur array
