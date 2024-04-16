@@ -30,6 +30,6 @@ const SortedArray = new AlgoSort(fileData);
 console.log(SortedArray.input_array);
 console.log(SortedArray.sort());
 console.log("-----------------");
-console.log(SortedArray.menu);
-SortedArray.showStats(2);
+SortedArray.printMenu();
+SortedArray.printStats(4);
 console.log("****************");

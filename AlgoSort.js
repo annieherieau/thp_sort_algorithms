@@ -5,7 +5,14 @@ export class AlgoSort {
     this.insertion_count = 0;
     this.selection_count = 0;
     this.quick_count = 0;
-    this.menu = 'Algorithmes de tri:\n1. Tri à bulle\n2. Tri par insertion\n3. Tri par sélection\n4. Tri par insertion\n'
+    this.merge_count = 0;
+    this.menu = [
+      {id: 1, label: "Tri à bulle", sort: this.bubbleSort(), count: this.bubble_count},
+      {id: 2, label: "Tri par insertion", sort: this.insertionSort(), count: this.insertion_count},
+      {id: 3, label: "Tri par sélection", sort: this.selectionSort(), count: this.selection_count},
+      {id: 4, label: "Tri rapide", sort: this.quickSort(), count: this.quick_count},
+      {id: 5, label: "Tri par fusion", sort: this.mergeSort(), count: this.merge_count}
+    ];
   }
 
   // tri par bulle
@@ -78,38 +85,25 @@ export class AlgoSort {
     return array;
   }
 
+  // Tri par fusion
+  mergeSort(){
+
+  }
+
   /// HELPERS
+  printMenu(){
+    this.menu.forEach(e => {
+      console.log(`${e.id}. ${e.label}`)
+    })
+  }
   // afficher les comparaisons
-  showStats(menuItem=1) {
-    switch (menuItem) {
-      case 1:
-        let bubble = this.bubbleSort();
+  printStats(menuItem) {
+    let menu = this.menu[menuItem-1];
+    if (!menu){return 'Error'}
+    let sort = this.menu[menuItem-1].sort;
         console.log(
-          `Tri à bulle: ${this.bubble_count} comparaisons [${bubble}]`
+          `${menu.label}: ${menu.count} comparaisons [${sort}]`
         );
-        break;
-    
-      case 2:
-        let insertion = this.insertionSort();
-        console.log(
-          `Tri par insertion: ${this.insertion_count} comparaisons [${insertion}]`
-        );
-      break;
-
-      case 3:
-   let selection = this.selectionSort();
-    console.log(
-      `Tri par sélection: ${this.selection_count} comparaisons [${selection}]`
-    );
-      break;
-      case 4:
-        let quick = this.quickSort();
-        console.log(`Tri rapide: ${this.quick_count} comparaisons [${quick}]`);
-      break;
-
-      default:
-        break;
-    }
   }
 
   // utilise push pour nouvel array car sinon le input_array est modifié avec sort sur array
