@@ -23,6 +23,7 @@ function algo(array, k, start = 0, comp = 1, result = false) {
   }
 
   for (let i = start; i < array.length -1; i++) {
+    
     let count = comp;
     let prec = i - count;
     let suiv = i + count;
@@ -34,16 +35,18 @@ function algo(array, k, start = 0, comp = 1, result = false) {
       suiv -= array.length;
     }
     // somme avec suivant et précédant
+    // console.log(array[prec]+ ' - ' + array[i] + ' - ' + array[suiv]);
     if (array[i] + array[prec] == k || array[i] + array[suiv] == k) {
       result = true;
       comp = array.length -1;
     }else{
       if (prec -1 <= array.length-1){
         // récursif : somme avec suivants et précédants
-        algo(array, k, start, comp + 1, result);
+        return algo(array, k, start, comp + 1, result);
       }
       
     }
+    if (result){ break;}
   }
   if (result){
     return result;
