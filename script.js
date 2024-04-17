@@ -4,7 +4,7 @@
 // For default exports you should use:
 import * as fs from "fs";
 
-import { AlgoSort } from "./AlgoSort.js";
+import { SortAlgo } from "./SortAlgo.js";
 
 // lire le tableau process de node
 // contient tous les arguments du point d'entrée du programme.
@@ -26,10 +26,10 @@ try {
 
 console.log("****************");
 console.log(fileName);
-const SortedArray = new AlgoSort(fileData);
+const SortedArray = new SortAlgo(fileData);
 console.log(SortedArray.input_array);
 console.log(SortedArray.sort());
 console.log("-----------------");
 SortedArray.printMenu();
-SortedArray.printStats(4);
+SortedArray.printStats();
 console.log("****************");

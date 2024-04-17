@@ -1,4 +1,4 @@
-export class AlgoSort {
+export class SortAlgo {
   constructor(data) {
     this.input_array = this.getData(data);
     this.bubble_count = 0;
@@ -7,15 +7,40 @@ export class AlgoSort {
     this.quick_count = 0;
     this.merge_count = 0;
     this.menu = [
-      {id: 1, label: "Tri à bulle", sort: this.bubbleSort(), count: this.bubble_count},
-      {id: 2, label: "Tri par insertion", sort: this.insertionSort(), count: this.insertion_count},
-      {id: 3, label: "Tri par sélection", sort: this.selectionSort(), count: this.selection_count},
-      {id: 4, label: "Tri rapide", sort: this.quickSort(), count: this.quick_count},
-      {id: 5, label: "Tri par fusion", sort: this.mergeSort(), count: this.merge_count}
+      {
+        id: 1,
+        label: "Tri à bulle",
+        sort: this.bubbleSort(),
+        count: this.bubble_count,
+      },
+      {
+        id: 2,
+        label: "Tri par insertion",
+        sort: this.insertionSort(),
+        count: this.insertion_count,
+      },
+      {
+        id: 3,
+        label: "Tri par sélection",
+        sort: this.selectionSort(),
+        count: this.selection_count,
+      },
+      {
+        id: 4,
+        label: "Tri rapide",
+        sort: this.quickSort(),
+        count: this.quick_count,
+      },
+      {
+        id: 5,
+        label: "Tri par fusion",
+        sort: this.mergeSort(),
+        count: this.merge_count,
+      },
     ];
   }
 
-  // tri par bulle
+  // tri par bulle : O(n2)
   // https://www.youtube.com/watch?v=uJLwnsLn0_Q
   bubbleSort() {
     let array = this.copy(this.input_array);
@@ -34,7 +59,7 @@ export class AlgoSort {
     return array;
   }
 
-  // tri par insertion
+  // tri par insertion : O(n2)
   // https://www.youtube.com/watch?v=nKzEJWbkPbQ&t=398s
   insertionSort() {
     let array = this.copy(this.input_array);
@@ -56,7 +81,7 @@ export class AlgoSort {
     return array;
   }
 
-  // Tri par sélection
+  // Tri par sélection : O(n2)
   // https://www.youtube.com/watch?v=g-PGLbMth_g
   selectionSort() {
     let array = this.copy(this.input_array);
@@ -86,24 +111,34 @@ export class AlgoSort {
   }
 
   // Tri par fusion
-  mergeSort(){
-
-  }
+  mergeSort() {}
 
   /// HELPERS
-  printMenu(){
-    this.menu.forEach(e => {
-      console.log(`${e.id}. ${e.label}`)
-    })
+  printMenu() {
+    this.menu.forEach((e) => {
+      console.log(`${e.id}. ${e.label}`);
+    });
   }
   // afficher les comparaisons
-  printStats(menuItem) {
-    let menu = this.menu[menuItem-1];
-    if (!menu){return 'Error'}
-    let sort = this.menu[menuItem-1].sort;
-        console.log(
-          `${menu.label}: ${menu.count} comparaisons [${sort}]`
-        );
+  printStats(id = false) {
+    if (id) {
+      this.printStatsItem(id);
+    } else {
+      this.menu.forEach((m) => {
+        this.printStatsItem(m.id);
+      });
+    }
+  }
+
+  // Lancer le tri et afficher les stats
+  printStatsItem(id) {
+    let menu = this.menu[id - 1];
+    if (menu) {
+      let sort = menu.sort;
+      console.log(`${menu.label}: ${menu.count} comparaisons [${sort}]`);
+    } else {
+      console.log(`Aucun tri ne correspond au menu ${id}.`);
+    }
   }
 
   // utilise push pour nouvel array car sinon le input_array est modifié avec sort sur array
