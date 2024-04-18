@@ -12,7 +12,7 @@ const data = [
 data.forEach((data) => {
   console.log(data.array);
   console.log(data.result);
-  console.log(algo(data.array));
+  console.log(algo(data.array).length);
   console.log("-------");
 });
 
