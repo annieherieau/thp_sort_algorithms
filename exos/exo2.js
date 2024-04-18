@@ -27,6 +27,6 @@ function algo(array) {
       result.push(array[i]);
     }
   }
-  return result.reverse();
+  return result.reverse().length;
 }
 
