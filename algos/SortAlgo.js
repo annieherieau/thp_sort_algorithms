@@ -134,6 +134,7 @@ export class SortAlgo {
 
   // transformer les données string ou array
   getData(data) {
+    data =  data ? data : [];
     let array = [];
     if (data.length && typeof data == "string") {
       array = data.split(" ");
