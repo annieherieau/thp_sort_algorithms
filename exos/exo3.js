@@ -14,6 +14,8 @@ data.forEach((data) => {
   // console.log(data.k);
   console.log(algo(data.array, data.k));
   console.log("-------");
+  console.log(hasPairWithSum(data.array, data.k));
+  console.log("-------");
 });
 
 // complexité algorithmique de O(n) : pas de boucle imbriquée
@@ -54,4 +56,15 @@ function algo(array, k, start = 0, comp = 1, result = false) {
     // recursif : avancer dans le tableau
    return algo(array, k, start + 1, comp, result);
   }
+}
+
+function hasPairWithSum(arr, k) {
+  const complements = new Set();
+  for (const number of arr) {
+      if (complements.has(number)) {
+          return true;
+      }
+      complements.add(k - number);
+  }
+  return false;
 }
